@@ -367,6 +367,38 @@ def run_downloads(
     results: list[DatasetResult] = []
     for spec in dataset_specs:
         destination = project_root / spec.destination
+        existing_files = (
+            sorted(path for path in destination.rglob("*") if path.is_file())
+            if destination.exists()
+            else []
+        )
+        supported_existing = [
+            path
+            for path in existing_files
+            if path.suffix.lower() in TABULAR_SUFFIXES or path.suffix.lower() == ".zip"
+        ]
+        if (
+            supported_existing
+            and not any(path.is_symlink() for path in existing_files)
+            and all(path.stat().st_size > 0 for path in supported_existing)
+        ):
+            existing_inventory = build_inventory(spec.identifier, project_root, existing_files)
+            read_failures = [
+                line
+                for entry in existing_inventory
+                for line in entry.splitlines()
+                if line.startswith("Read errors: ")
+                and line not in {"Read errors: none", "Read errors: not inspected"}
+            ]
+            if not read_failures:
+                LOGGER.info(
+                    "Verified existing local data for %s; skipping download",
+                    spec.identifier,
+                )
+                results.append(
+                    DatasetResult(spec, existing_files, existing_inventory)
+                )
+                continue
         LOGGER.info("Downloading %s (%s)", spec.label, spec.identifier)
         try:
             returned_path = downloader(spec.identifier)

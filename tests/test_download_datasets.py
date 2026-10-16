@@ -190,3 +190,22 @@ def test_run_downloads_rejects_missing_download_directory(tmp_path: Path) -> Non
 
     assert not results[0].succeeded
     assert "DatasetDownloadError" in (results[0].error or "")
+
+
+def test_run_downloads_skips_verified_existing_data(tmp_path: Path) -> None:
+    spec = DatasetSpec("owner/present", "Present", Path("data/raw/present"))
+    existing = _write(
+        tmp_path / spec.destination / "results.csv",
+        b"driver,points\nA,10\n",
+    )
+
+    def unexpected_download(_identifier: str) -> Path:
+        raise AssertionError("verified local files should not be downloaded again")
+
+    result = run_downloads(
+        tmp_path, (spec,), downloader=unexpected_download, auth_available=True
+    )[0]
+
+    assert result.succeeded
+    assert result.staged_files == [existing]
+    assert any("Read errors: none" in entry for entry in result.inventory)

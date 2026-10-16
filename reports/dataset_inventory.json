@@ -1,0 +1,1765 @@
+[
+  {
+    "file": "data\\raw\\fastf1\\season=2024\\round=01-bahrain-grand-prix\\session=Q\\qualifying_results.json",
+    "source": "session=Q",
+    "format": "json",
+    "size_bytes": 12275,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 1,
+        "columns": 10,
+        "column_types": {
+          "records": "object",
+          "metadata.dataset": "object",
+          "metadata.season": "int64",
+          "metadata.event_id": "object",
+          "metadata.event_name": "object",
+          "metadata.event_round": "int64",
+          "metadata.session": "object",
+          "metadata.retrieved_at_utc": "object",
+          "metadata.source": "object",
+          "metadata.record_count": "int64"
+        },
+        "missing": {
+          "records": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.dataset": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.season": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.event_id": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.event_name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.event_round": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.session": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.retrieved_at_utc": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.source": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.record_count": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "metadata.event_id"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {
+          "records": {
+            "[{'DriverNumber': '1', 'BroadcastName': '', 'Abbreviation': 'VER', 'DriverId': 'max_verstappen', 'TeamName': 'Red Bull', 'TeamColor': '', 'TeamId': 'red_bull', 'FirstName': 'Max', 'LastName': 'Verstappen', 'FullName': 'Max Verstappen', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 1.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.031S', 'Q2': 'P0DT0H1M29.374S', 'Q3': 'P0DT0H1M29.179S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '16', 'BroadcastName': '', 'Abbreviation': 'LEC', 'DriverId': 'leclerc', 'TeamName': 'Ferrari', 'TeamColor': '', 'TeamId': 'ferrari', 'FirstName': 'Charles', 'LastName': 'Leclerc', 'FullName': 'Charles Leclerc', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 2.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.243S', 'Q2': 'P0DT0H1M29.165S', 'Q3': 'P0DT0H1M29.407S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '63', 'BroadcastName': '', 'Abbreviation': 'RUS', 'DriverId': 'russell', 'TeamName': 'Mercedes', 'TeamColor': '', 'TeamId': 'mercedes', 'FirstName': 'George', 'LastName': 'Russell', 'FullName': 'George Russell', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 3.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.350S', 'Q2': 'P0DT0H1M29.922S', 'Q3': 'P0DT0H1M29.485S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '55', 'BroadcastName': '', 'Abbreviation': 'SAI', 'DriverId': 'sainz', 'TeamName': 'Ferrari', 'TeamColor': '', 'TeamId': 'ferrari', 'FirstName': 'Carlos', 'LastName': 'Sainz', 'FullName': 'Carlos Sainz', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 4.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M29.909S', 'Q2': 'P0DT0H1M29.573S', 'Q3': 'P0DT0H1M29.507S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '11', 'BroadcastName': '', 'Abbreviation': 'PER', 'DriverId': 'perez', 'TeamName': 'Red Bull', 'TeamColor': '', 'TeamId': 'red_bull', 'FirstName': 'Sergio', 'LastName': 'Pérez', 'FullName': 'Sergio Pérez', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 5.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.221S', 'Q2': 'P0DT0H1M29.932S', 'Q3': 'P0DT0H1M29.537S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '14', 'BroadcastName': '', 'Abbreviation': 'ALO', 'DriverId': 'alonso', 'TeamName': 'Aston Martin', 'TeamColor': '', 'TeamId': 'aston_martin', 'FirstName': 'Fernando', 'LastName': 'Alonso', 'FullName': 'Fernando Alonso', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 6.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.179S', 'Q2': 'P0DT0H1M29.801S', 'Q3': 'P0DT0H1M29.542S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '4', 'BroadcastName': '', 'Abbreviation': 'NOR', 'DriverId': 'norris', 'TeamName': 'McLaren', 'TeamColor': '', 'TeamId': 'mclaren', 'FirstName': 'Lando', 'LastName': 'Norris', 'FullName': 'Lando Norris', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 7.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.143S', 'Q2': 'P0DT0H1M29.941S', 'Q3': 'P0DT0H1M29.614S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '81', 'BroadcastName': '', 'Abbreviation': 'PIA', 'DriverId': 'piastri', 'TeamName': 'McLaren', 'TeamColor': '', 'TeamId': 'mclaren', 'FirstName': 'Oscar', 'LastName': 'Piastri', 'FullName': 'Oscar Piastri', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 8.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.531S', 'Q2': 'P0DT0H1M30.122S', 'Q3': 'P0DT0H1M29.683S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '44', 'BroadcastName': '', 'Abbreviation': 'HAM', 'DriverId': 'hamilton', 'TeamName': 'Mercedes', 'TeamColor': '', 'TeamId': 'mercedes', 'FirstName': 'Lewis', 'LastName': 'Hamilton', 'FullName': 'Lewis Hamilton', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 9.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.451S', 'Q2': 'P0DT0H1M29.718S', 'Q3': 'P0DT0H1M29.710S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '27', 'BroadcastName': '', 'Abbreviation': 'HUL', 'DriverId': 'hulkenberg', 'TeamName': 'Haas F1 Team', 'TeamColor': '', 'TeamId': 'haas', 'FirstName': 'Nico', 'LastName': 'Hülkenberg', 'FullName': 'Nico Hülkenberg', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 10.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.566S', 'Q2': 'P0DT0H1M29.851S', 'Q3': 'P0DT0H1M30.502S', 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '22', 'BroadcastName': '', 'Abbreviation': 'TSU', 'DriverId': 'tsunoda', 'TeamName': 'RB F1 Team', 'TeamColor': '', 'TeamId': 'rb', 'FirstName': 'Yuki', 'LastName': 'Tsunoda', 'FullName': 'Yuki Tsunoda', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 11.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.481S', 'Q2': 'P0DT0H1M30.129S', 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '18', 'BroadcastName': '', 'Abbreviation': 'STR', 'DriverId': 'stroll', 'TeamName': 'Aston Martin', 'TeamColor': '', 'TeamId': 'aston_martin', 'FirstName': 'Lance', 'LastName': 'Stroll', 'FullName': 'Lance Stroll', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 12.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M29.965S', 'Q2': 'P0DT0H1M30.200S', 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '23', 'BroadcastName': '', 'Abbreviation': 'ALB', 'DriverId': 'albon', 'TeamName': 'Williams', 'TeamColor': '', 'TeamId': 'williams', 'FirstName': 'Alexander', 'LastName': 'Albon', 'FullName': 'Alexander Albon', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 13.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.397S', 'Q2': 'P0DT0H1M30.221S', 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '3', 'BroadcastName': '', 'Abbreviation': 'RIC', 'DriverId': 'ricciardo', 'TeamName': 'RB F1 Team', 'TeamColor': '', 'TeamId': 'rb', 'FirstName': 'Daniel', 'LastName': 'Ricciardo', 'FullName': 'Daniel Ricciardo', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 14.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.562S', 'Q2': 'P0DT0H1M30.278S', 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '20', 'BroadcastName': '', 'Abbreviation': 'MAG', 'DriverId': 'kevin_magnussen', 'TeamName': 'Haas F1 Team', 'TeamColor': '', 'TeamId': 'haas', 'FirstName': 'Kevin', 'LastName': 'Magnussen', 'FullName': 'Kevin Magnussen', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 15.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.646S', 'Q2': 'P0DT0H1M30.529S', 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '77', 'BroadcastName': '', 'Abbreviation': 'BOT', 'DriverId': 'bottas', 'TeamName': 'Sauber', 'TeamColor': '', 'TeamId': 'sauber', 'FirstName': 'Valtteri', 'LastName': 'Bottas', 'FullName': 'Valtteri Bottas', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 16.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.756S', 'Q2': None, 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '24', 'BroadcastName': '', 'Abbreviation': 'ZHO', 'DriverId': 'zhou', 'TeamName': 'Sauber', 'TeamColor': '', 'TeamId': 'sauber', 'FirstName': 'Guanyu', 'LastName': 'Zhou', 'FullName': 'Guanyu Zhou', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 17.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.757S', 'Q2': None, 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '2', 'BroadcastName': '', 'Abbreviation': 'SAR', 'DriverId': 'sargeant', 'TeamName': 'Williams', 'TeamColor': '', 'TeamId': 'williams', 'FirstName': 'Logan', 'LastName': 'Sargeant', 'FullName': 'Logan Sargeant', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 18.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.770S', 'Q2': None, 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '31', 'BroadcastName': '', 'Abbreviation': 'OCO', 'DriverId': 'ocon', 'TeamName': 'Alpine F1 Team', 'TeamColor': '', 'TeamId': 'alpine', 'FirstName': 'Esteban', 'LastName': 'Ocon', 'FullName': 'Esteban Ocon', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 19.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.793S', 'Q2': None, 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}, {'DriverNumber': '10', 'BroadcastName': '', 'Abbreviation': 'GAS', 'DriverId': 'gasly', 'TeamName': 'Alpine F1 Team', 'TeamColor': '', 'TeamId': 'alpine', 'FirstName': 'Pierre', 'LastName': 'Gasly', 'FullName': 'Pierre Gasly', 'HeadshotUrl': '', 'CountryCode': '', 'Position': 20.0, 'ClassifiedPosition': '', 'GridPosition': None, 'Q1': 'P0DT0H1M30.948S', 'Q2': None, 'Q3': None, 'Time': None, 'Status': '', 'Points': None, 'Laps': None}]": 1
+          },
+          "metadata.dataset": {
+            "'qualifying_results'": 1
+          },
+          "metadata.event_id": {
+            "'2024:1'": 1
+          },
+          "metadata.event_name": {
+            "'Bahrain Grand Prix'": 1
+          },
+          "metadata.session": {
+            "'Q'": 1
+          },
+          "metadata.retrieved_at_utc": {
+            "'2026-10-16T08:33:02.211530+00:00'": 1
+          },
+          "metadata.source": {
+            "'fastf1'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\fastf1\\season=2024\\schedule.json",
+    "source": "season=2024",
+    "format": "json",
+    "size_bytes": 25704,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 1,
+        "columns": 10,
+        "column_types": {
+          "records": "object",
+          "metadata.dataset": "object",
+          "metadata.season": "int64",
+          "metadata.event_id": "object",
+          "metadata.event_name": "object",
+          "metadata.event_round": "object",
+          "metadata.session": "object",
+          "metadata.retrieved_at_utc": "object",
+          "metadata.source": "object",
+          "metadata.record_count": "int64"
+        },
+        "missing": {
+          "records": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.dataset": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.season": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.event_id": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "metadata.event_name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.event_round": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "metadata.session": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "metadata.retrieved_at_utc": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.source": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "metadata.record_count": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [],
+        "date_ranges": {},
+        "categorical_samples": {
+          "records": {
+            "[{'RoundNumber': 1, 'Country': 'Bahrain', 'Location': 'Sakhir', 'OfficialEventName': 'FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2024', 'EventDate': '2024-03-02T00:00:00.000000000', 'EventName': 'Bahrain Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-02-29T11:30:00.000000000Z', 'Session1DateUtc': '2024-02-29T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-02-29T15:00:00.000000000Z', 'Session2DateUtc': '2024-02-29T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-03-01T12:30:00.000000000Z', 'Session3DateUtc': '2024-03-01T12:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-03-01T16:00:00.000000000Z', 'Session4DateUtc': '2024-03-01T16:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-03-02T15:00:00.000000000Z', 'Session5DateUtc': '2024-03-02T15:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 2, 'Country': 'Saudi Arabia', 'Location': 'Jeddah', 'OfficialEventName': 'FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2024', 'EventDate': '2024-03-09T00:00:00.000000000', 'EventName': 'Saudi Arabian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-03-07T13:30:00.000000000Z', 'Session1DateUtc': '2024-03-07T13:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-03-07T17:10:00.000000000Z', 'Session2DateUtc': '2024-03-07T17:10:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-03-08T13:30:00.000000000Z', 'Session3DateUtc': '2024-03-08T13:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-03-08T17:00:00.000000000Z', 'Session4DateUtc': '2024-03-08T17:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-03-09T17:00:00.000000000Z', 'Session5DateUtc': '2024-03-09T17:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 3, 'Country': 'Australia', 'Location': 'Melbourne', 'OfficialEventName': 'FORMULA 1 ROLEX AUSTRALIAN GRAND PRIX 2024', 'EventDate': '2024-03-24T00:00:00.000000000', 'EventName': 'Australian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-03-22T01:30:00.000000000Z', 'Session1DateUtc': '2024-03-22T01:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-03-22T05:00:00.000000000Z', 'Session2DateUtc': '2024-03-22T05:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-03-23T01:30:00.000000000Z', 'Session3DateUtc': '2024-03-23T01:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-03-23T05:00:00.000000000Z', 'Session4DateUtc': '2024-03-23T05:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-03-24T04:00:00.000000000Z', 'Session5DateUtc': '2024-03-24T04:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 4, 'Country': 'Japan', 'Location': 'Suzuka', 'OfficialEventName': 'FORMULA 1 MSC CRUISES JAPANESE GRAND PRIX 2024', 'EventDate': '2024-04-07T00:00:00.000000000', 'EventName': 'Japanese Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-04-05T02:30:00.000000000Z', 'Session1DateUtc': '2024-04-05T02:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-04-05T06:00:00.000000000Z', 'Session2DateUtc': '2024-04-05T06:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-04-06T02:30:00.000000000Z', 'Session3DateUtc': '2024-04-06T02:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-04-06T06:00:00.000000000Z', 'Session4DateUtc': '2024-04-06T06:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-04-07T05:00:00.000000000Z', 'Session5DateUtc': '2024-04-07T05:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 5, 'Country': 'China', 'Location': 'Shanghai', 'OfficialEventName': 'FORMULA 1 LENOVO CHINESE GRAND PRIX 2024', 'EventDate': '2024-04-21T00:00:00.000000000', 'EventName': 'Chinese Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-04-19T03:30:00.000000000Z', 'Session1DateUtc': '2024-04-19T03:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-04-19T07:30:00.000000000Z', 'Session2DateUtc': '2024-04-19T07:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-04-20T03:00:00.000000000Z', 'Session3DateUtc': '2024-04-20T03:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-04-20T07:00:00.000000000Z', 'Session4DateUtc': '2024-04-20T07:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-04-21T07:00:00.000000000Z', 'Session5DateUtc': '2024-04-21T07:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 6, 'Country': 'United States', 'Location': 'Miami', 'OfficialEventName': 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'EventDate': '2024-05-05T00:00:00.000000000', 'EventName': 'Miami Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-05-03T16:30:00.000000000Z', 'Session1DateUtc': '2024-05-03T16:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-05-03T20:30:00.000000000Z', 'Session2DateUtc': '2024-05-03T20:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-05-04T16:00:00.000000000Z', 'Session3DateUtc': '2024-05-04T16:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-05-04T20:00:00.000000000Z', 'Session4DateUtc': '2024-05-04T20:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-05-05T20:00:00.000000000Z', 'Session5DateUtc': '2024-05-05T20:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 7, 'Country': 'Italy', 'Location': 'Imola', 'OfficialEventName': \"FORMULA 1 MSC CRUISES GRAN PREMIO DEL MADE IN ITALY E DELL'EMILIA-ROMAGNA 2024\", 'EventDate': '2024-05-19T00:00:00.000000000', 'EventName': 'Emilia Romagna Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-05-17T11:30:00.000000000Z', 'Session1DateUtc': '2024-05-17T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-05-17T15:00:00.000000000Z', 'Session2DateUtc': '2024-05-17T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-05-18T10:30:00.000000000Z', 'Session3DateUtc': '2024-05-18T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-05-18T14:00:00.000000000Z', 'Session4DateUtc': '2024-05-18T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-05-19T13:00:00.000000000Z', 'Session5DateUtc': '2024-05-19T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 8, 'Country': 'Monaco', 'Location': 'Monaco', 'OfficialEventName': 'FORMULA 1 GRAND PRIX DE MONACO 2024', 'EventDate': '2024-05-26T00:00:00.000000000', 'EventName': 'Monaco Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-05-24T11:30:00.000000000Z', 'Session1DateUtc': '2024-05-24T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-05-24T15:00:00.000000000Z', 'Session2DateUtc': '2024-05-24T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-05-25T10:30:00.000000000Z', 'Session3DateUtc': '2024-05-25T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-05-25T14:00:00.000000000Z', 'Session4DateUtc': '2024-05-25T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-05-26T13:00:00.000000000Z', 'Session5DateUtc': '2024-05-26T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 9, 'Country': 'Canada', 'Location': 'Montréal', 'OfficialEventName': 'FORMULA 1 AWS GRAND PRIX DU CANADA 2024', 'EventDate': '2024-06-09T00:00:00.000000000', 'EventName': 'Canadian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-06-07T17:30:00.000000000Z', 'Session1DateUtc': '2024-06-07T17:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-06-07T21:00:00.000000000Z', 'Session2DateUtc': '2024-06-07T21:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-06-08T16:30:00.000000000Z', 'Session3DateUtc': '2024-06-08T16:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-06-08T20:00:00.000000000Z', 'Session4DateUtc': '2024-06-08T20:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-06-09T18:00:00.000000000Z', 'Session5DateUtc': '2024-06-09T18:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 10, 'Country': 'Spain', 'Location': 'Barcelona', 'OfficialEventName': 'FORMULA 1 ARAMCO GRAN PREMIO DE ESPAÑA 2024', 'EventDate': '2024-06-23T00:00:00.000000000', 'EventName': 'Spanish Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-06-21T11:30:00.000000000Z', 'Session1DateUtc': '2024-06-21T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-06-21T15:00:00.000000000Z', 'Session2DateUtc': '2024-06-21T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-06-22T10:30:00.000000000Z', 'Session3DateUtc': '2024-06-22T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-06-22T14:00:00.000000000Z', 'Session4DateUtc': '2024-06-22T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-06-23T13:00:00.000000000Z', 'Session5DateUtc': '2024-06-23T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 11, 'Country': 'Austria', 'Location': 'Spielberg', 'OfficialEventName': 'FORMULA 1 QATAR AIRWAYS AUSTRIAN GRAND PRIX 2024', 'EventDate': '2024-06-30T00:00:00.000000000', 'EventName': 'Austrian Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-06-28T10:30:00.000000000Z', 'Session1DateUtc': '2024-06-28T10:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-06-28T14:30:00.000000000Z', 'Session2DateUtc': '2024-06-28T14:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-06-29T10:00:00.000000000Z', 'Session3DateUtc': '2024-06-29T10:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-06-29T14:00:00.000000000Z', 'Session4DateUtc': '2024-06-29T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-06-30T13:00:00.000000000Z', 'Session5DateUtc': '2024-06-30T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 12, 'Country': 'United Kingdom', 'Location': 'Silverstone', 'OfficialEventName': 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024', 'EventDate': '2024-07-07T00:00:00.000000000', 'EventName': 'British Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-07-05T11:30:00.000000000Z', 'Session1DateUtc': '2024-07-05T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-07-05T15:00:00.000000000Z', 'Session2DateUtc': '2024-07-05T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-07-06T10:30:00.000000000Z', 'Session3DateUtc': '2024-07-06T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-07-06T14:00:00.000000000Z', 'Session4DateUtc': '2024-07-06T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-07-07T14:00:00.000000000Z', 'Session5DateUtc': '2024-07-07T14:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 13, 'Country': 'Hungary', 'Location': 'Budapest', 'OfficialEventName': 'FORMULA 1 HUNGARIAN GRAND PRIX 2024', 'EventDate': '2024-07-21T00:00:00.000000000', 'EventName': 'Hungarian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-07-19T11:30:00.000000000Z', 'Session1DateUtc': '2024-07-19T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-07-19T15:00:00.000000000Z', 'Session2DateUtc': '2024-07-19T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-07-20T10:30:00.000000000Z', 'Session3DateUtc': '2024-07-20T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-07-20T14:00:00.000000000Z', 'Session4DateUtc': '2024-07-20T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-07-21T13:00:00.000000000Z', 'Session5DateUtc': '2024-07-21T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 14, 'Country': 'Belgium', 'Location': 'Spa-Francorchamps', 'OfficialEventName': 'FORMULA 1 ROLEX BELGIAN GRAND PRIX 2024', 'EventDate': '2024-07-28T00:00:00.000000000', 'EventName': 'Belgian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-07-26T11:30:00.000000000Z', 'Session1DateUtc': '2024-07-26T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-07-26T15:00:00.000000000Z', 'Session2DateUtc': '2024-07-26T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-07-27T10:30:00.000000000Z', 'Session3DateUtc': '2024-07-27T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-07-27T14:00:00.000000000Z', 'Session4DateUtc': '2024-07-27T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-07-28T13:00:00.000000000Z', 'Session5DateUtc': '2024-07-28T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 15, 'Country': 'Netherlands', 'Location': 'Zandvoort', 'OfficialEventName': 'FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2024', 'EventDate': '2024-08-25T00:00:00.000000000', 'EventName': 'Dutch Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-08-23T10:30:00.000000000Z', 'Session1DateUtc': '2024-08-23T10:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-08-23T14:00:00.000000000Z', 'Session2DateUtc': '2024-08-23T14:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-08-24T09:30:00.000000000Z', 'Session3DateUtc': '2024-08-24T09:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-08-24T13:00:00.000000000Z', 'Session4DateUtc': '2024-08-24T13:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-08-25T13:00:00.000000000Z', 'Session5DateUtc': '2024-08-25T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 16, 'Country': 'Italy', 'Location': 'Monza', 'OfficialEventName': 'FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2024', 'EventDate': '2024-09-01T00:00:00.000000000', 'EventName': 'Italian Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-08-30T11:30:00.000000000Z', 'Session1DateUtc': '2024-08-30T11:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-08-30T15:00:00.000000000Z', 'Session2DateUtc': '2024-08-30T15:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-08-31T10:30:00.000000000Z', 'Session3DateUtc': '2024-08-31T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-08-31T14:00:00.000000000Z', 'Session4DateUtc': '2024-08-31T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-09-01T13:00:00.000000000Z', 'Session5DateUtc': '2024-09-01T13:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 17, 'Country': 'Azerbaijan', 'Location': 'Baku', 'OfficialEventName': 'FORMULA 1 QATAR AIRWAYS AZERBAIJAN GRAND PRIX 2024', 'EventDate': '2024-09-15T00:00:00.000000000', 'EventName': 'Azerbaijan Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-09-13T09:30:00.000000000Z', 'Session1DateUtc': '2024-09-13T09:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-09-13T13:00:00.000000000Z', 'Session2DateUtc': '2024-09-13T13:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-09-14T08:30:00.000000000Z', 'Session3DateUtc': '2024-09-14T08:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-09-14T12:00:00.000000000Z', 'Session4DateUtc': '2024-09-14T12:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-09-15T11:00:00.000000000Z', 'Session5DateUtc': '2024-09-15T11:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 18, 'Country': 'Singapore', 'Location': 'Marina Bay', 'OfficialEventName': 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024', 'EventDate': '2024-09-22T00:00:00.000000000', 'EventName': 'Singapore Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-09-20T09:30:00.000000000Z', 'Session1DateUtc': '2024-09-20T09:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-09-20T13:00:00.000000000Z', 'Session2DateUtc': '2024-09-20T13:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-09-21T09:30:00.000000000Z', 'Session3DateUtc': '2024-09-21T09:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-09-21T13:00:00.000000000Z', 'Session4DateUtc': '2024-09-21T13:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-09-22T12:00:00.000000000Z', 'Session5DateUtc': '2024-09-22T12:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 19, 'Country': 'United States', 'Location': 'Austin', 'OfficialEventName': 'FORMULA 1 PIRELLI UNITED STATES GRAND PRIX 2024', 'EventDate': '2024-10-20T00:00:00.000000000', 'EventName': 'United States Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-10-18T17:30:00.000000000Z', 'Session1DateUtc': '2024-10-18T17:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-10-18T21:30:00.000000000Z', 'Session2DateUtc': '2024-10-18T21:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-10-19T18:00:00.000000000Z', 'Session3DateUtc': '2024-10-19T18:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-10-19T22:00:00.000000000Z', 'Session4DateUtc': '2024-10-19T22:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-10-20T19:00:00.000000000Z', 'Session5DateUtc': '2024-10-20T19:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 20, 'Country': 'Mexico', 'Location': 'Mexico City', 'OfficialEventName': 'FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024', 'EventDate': '2024-10-27T00:00:00.000000000', 'EventName': 'Mexico City Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-10-25T18:30:00.000000000Z', 'Session1DateUtc': '2024-10-25T18:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-10-25T22:00:00.000000000Z', 'Session2DateUtc': '2024-10-25T22:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-10-26T17:30:00.000000000Z', 'Session3DateUtc': '2024-10-26T17:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-10-26T21:00:00.000000000Z', 'Session4DateUtc': '2024-10-26T21:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-10-27T20:00:00.000000000Z', 'Session5DateUtc': '2024-10-27T20:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 21, 'Country': 'Brazil', 'Location': 'São Paulo', 'OfficialEventName': 'FORMULA 1 LENOVO GRANDE PRÊMIO DE SÃO PAULO 2024', 'EventDate': '2024-11-03T00:00:00.000000000', 'EventName': 'São Paulo Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-11-01T14:30:00.000000000Z', 'Session1DateUtc': '2024-11-01T14:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-11-01T18:30:00.000000000Z', 'Session2DateUtc': '2024-11-01T18:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-11-02T14:00:00.000000000Z', 'Session3DateUtc': '2024-11-02T14:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-11-03T10:30:00.000000000Z', 'Session4DateUtc': '2024-11-03T10:30:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-11-03T15:30:00.000000000Z', 'Session5DateUtc': '2024-11-03T15:30:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 22, 'Country': 'United States', 'Location': 'Las Vegas', 'OfficialEventName': 'FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2024', 'EventDate': '2024-11-23T00:00:00.000000000', 'EventName': 'Las Vegas Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-11-22T02:30:00.000000000Z', 'Session1DateUtc': '2024-11-22T02:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-11-22T06:00:00.000000000Z', 'Session2DateUtc': '2024-11-22T06:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-11-23T02:30:00.000000000Z', 'Session3DateUtc': '2024-11-23T02:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-11-23T06:00:00.000000000Z', 'Session4DateUtc': '2024-11-23T06:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-11-24T06:00:00.000000000Z', 'Session5DateUtc': '2024-11-24T06:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 23, 'Country': 'Qatar', 'Location': 'Lusail', 'OfficialEventName': 'FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2024', 'EventDate': '2024-12-01T00:00:00.000000000', 'EventName': 'Qatar Grand Prix', 'EventFormat': 'sprint_qualifying', 'Session1': 'Practice 1', 'Session1Date': '2024-11-29T13:30:00.000000000Z', 'Session1DateUtc': '2024-11-29T13:30:00.000000000', 'Session2': 'Sprint Qualifying', 'Session2Date': '2024-11-29T17:30:00.000000000Z', 'Session2DateUtc': '2024-11-29T17:30:00.000000000', 'Session3': 'Sprint', 'Session3Date': '2024-11-30T14:00:00.000000000Z', 'Session3DateUtc': '2024-11-30T14:00:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-11-30T18:00:00.000000000Z', 'Session4DateUtc': '2024-11-30T18:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-12-01T16:00:00.000000000Z', 'Session5DateUtc': '2024-12-01T16:00:00.000000000', 'F1ApiSupport': True}, {'RoundNumber': 24, 'Country': 'United Arab Emirates', 'Location': 'Yas Island', 'OfficialEventName': 'FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2024', 'EventDate': '2024-12-08T00:00:00.000000000', 'EventName': 'Abu Dhabi Grand Prix', 'EventFormat': 'conventional', 'Session1': 'Practice 1', 'Session1Date': '2024-12-06T09:30:00.000000000Z', 'Session1DateUtc': '2024-12-06T09:30:00.000000000', 'Session2': 'Practice 2', 'Session2Date': '2024-12-06T13:00:00.000000000Z', 'Session2DateUtc': '2024-12-06T13:00:00.000000000', 'Session3': 'Practice 3', 'Session3Date': '2024-12-07T10:30:00.000000000Z', 'Session3DateUtc': '2024-12-07T10:30:00.000000000', 'Session4': 'Qualifying', 'Session4Date': '2024-12-07T14:00:00.000000000Z', 'Session4DateUtc': '2024-12-07T14:00:00.000000000', 'Session5': 'Race', 'Session5Date': '2024-12-08T13:00:00.000000000Z', 'Session5DateUtc': '2024-12-08T13:00:00.000000000', 'F1ApiSupport': True}]": 1
+          },
+          "metadata.dataset": {
+            "'schedule'": 1
+          },
+          "metadata.event_id": {
+            "None": 1
+          },
+          "metadata.event_name": {
+            "'schedule'": 1
+          },
+          "metadata.event_round": {
+            "None": 1
+          },
+          "metadata.session": {
+            "None": 1
+          },
+          "metadata.retrieved_at_utc": {
+            "'2026-10-16T08:32:58.183539+00:00'": 1
+          },
+          "metadata.source": {
+            "'fastf1'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\circuits.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 10104,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 77,
+        "columns": 9,
+        "column_types": {
+          "circuitId": "int64",
+          "circuitRef": "object",
+          "name": "object",
+          "location": "object",
+          "country": "object",
+          "lat": "float64",
+          "lng": "float64",
+          "alt": "int64",
+          "url": "object"
+        },
+        "missing": {
+          "circuitId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "circuitRef": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "location": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "country": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "lat": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "lng": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "alt": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "url": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "circuitId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\constructor_results.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 219365,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 12625,
+        "columns": 5,
+        "column_types": {
+          "constructorResultsId": "int64",
+          "raceId": "int64",
+          "constructorId": "int64",
+          "points": "float64",
+          "status": "object"
+        },
+        "missing": {
+          "constructorResultsId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "points": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "status": {
+            "count": 12608,
+            "percent": 99.87
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "constructorResultsId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {
+          "status": {
+            "nan": 12608,
+            "'D'": 17
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\constructor_standings.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 317206,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 13391,
+        "columns": 7,
+        "column_types": {
+          "constructorStandingsId": "int64",
+          "raceId": "int64",
+          "constructorId": "int64",
+          "points": "float64",
+          "position": "int64",
+          "positionText": "object",
+          "wins": "int64"
+        },
+        "missing": {
+          "constructorStandingsId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "points": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "positionText": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "wins": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "constructorStandingsId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {
+          "positionText": {
+            "'1'": 1061,
+            "'3'": 1061,
+            "'2'": 1061,
+            "'4'": 1060,
+            "'5'": 1060,
+            "'6'": 1060,
+            "'7'": 1056,
+            "'8'": 1044,
+            "'9'": 1030,
+            "'10'": 999,
+            "'11'": 706,
+            "'12'": 497,
+            "'13'": 389,
+            "'14'": 333,
+            "'15'": 300,
+            "'16'": 227,
+            "'17'": 179,
+            "'18'": 124,
+            "'19'": 94,
+            "'20'": 29,
+            "'E'": 17,
+            "'21'": 3,
+            "'22'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\constructors.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 17478,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 212,
+        "columns": 5,
+        "column_types": {
+          "constructorId": "int64",
+          "constructorRef": "object",
+          "name": "object",
+          "nationality": "object",
+          "url": "object"
+        },
+        "missing": {
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorRef": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "nationality": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "url": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "constructorId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {
+          "nationality": {
+            "'British'": 86,
+            "'American'": 39,
+            "'Italian'": 30,
+            "'French'": 13,
+            "'German'": 10,
+            "'Japanese'": 5,
+            "'Swiss'": 5,
+            "'Dutch'": 3,
+            "'South African'": 3,
+            "'Russian'": 2,
+            "'Malaysian'": 2,
+            "'Canadian'": 2,
+            "'Indian'": 1,
+            "'Austrian'": 1,
+            "'Hong Kong'": 1,
+            "'Irish'": 1,
+            "'Mexican'": 1,
+            "'Brazilian'": 1,
+            "'New Zealander'": 1,
+            "'Australian'": 1,
+            "'Rhodesian'": 1,
+            "'Belgian'": 1,
+            "'East German'": 1,
+            "'Spanish'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\driver_standings.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 883771,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 34863,
+        "columns": 7,
+        "column_types": {
+          "driverStandingsId": "int64",
+          "raceId": "int64",
+          "driverId": "int64",
+          "points": "float64",
+          "position": "int64",
+          "positionText": "object",
+          "wins": "int64"
+        },
+        "missing": {
+          "driverStandingsId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "points": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "positionText": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "wins": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "driverStandingsId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\drivers.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 94367,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 861,
+        "columns": 9,
+        "column_types": {
+          "driverId": "int64",
+          "driverRef": "object",
+          "number": "float64",
+          "code": "object",
+          "forename": "object",
+          "surname": "object",
+          "dob": "object",
+          "nationality": "object",
+          "url": "object"
+        },
+        "missing": {
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverRef": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "number": {
+            "count": 802,
+            "percent": 93.15
+          },
+          "code": {
+            "count": 757,
+            "percent": 87.92
+          },
+          "forename": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "surname": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "dob": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "nationality": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "url": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "driverId"
+          ]
+        ],
+        "date_ranges": {
+          "dob": {
+            "min": "1896-12-28 00:00:00",
+            "max": "2005-05-08 00:00:00"
+          }
+        },
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\lap_times.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 17622395,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 589081,
+        "columns": 6,
+        "column_types": {
+          "raceId": "int64",
+          "driverId": "int64",
+          "lap": "int64",
+          "position": "int64",
+          "time": "object",
+          "milliseconds": "int64"
+        },
+        "missing": {
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "lap": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "milliseconds": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "raceId",
+            "driverId",
+            "lap"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\pit_stops.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 443719,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 11371,
+        "columns": 7,
+        "column_types": {
+          "raceId": "int64",
+          "driverId": "int64",
+          "stop": "int64",
+          "lap": "int64",
+          "time": "object",
+          "duration": "object",
+          "milliseconds": "int64"
+        },
+        "missing": {
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "stop": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "lap": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "duration": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "milliseconds": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "raceId",
+            "driverId",
+            "lap"
+          ],
+          [
+            "raceId",
+            "driverId",
+            "stop"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\qualifying.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 465231,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 10494,
+        "columns": 9,
+        "column_types": {
+          "qualifyId": "int64",
+          "raceId": "int64",
+          "driverId": "int64",
+          "constructorId": "int64",
+          "number": "int64",
+          "position": "int64",
+          "q1": "object",
+          "q2": "object",
+          "q3": "object"
+        },
+        "missing": {
+          "qualifyId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "number": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "q1": {
+            "count": 156,
+            "percent": 1.49
+          },
+          "q2": {
+            "count": 4647,
+            "percent": 44.28
+          },
+          "q3": {
+            "count": 6865,
+            "percent": 65.42
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "qualifyId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\races.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 164344,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 1125,
+        "columns": 18,
+        "column_types": {
+          "raceId": "int64",
+          "year": "int64",
+          "round": "int64",
+          "circuitId": "int64",
+          "name": "object",
+          "date": "object",
+          "time": "object",
+          "url": "object",
+          "fp1_date": "object",
+          "fp1_time": "object",
+          "fp2_date": "object",
+          "fp2_time": "object",
+          "fp3_date": "object",
+          "fp3_time": "object",
+          "quali_date": "object",
+          "quali_time": "object",
+          "sprint_date": "object",
+          "sprint_time": "object"
+        },
+        "missing": {
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "year": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "round": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "circuitId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "date": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 731,
+            "percent": 64.98
+          },
+          "url": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "fp1_date": {
+            "count": 1035,
+            "percent": 92.0
+          },
+          "fp1_time": {
+            "count": 1057,
+            "percent": 93.96
+          },
+          "fp2_date": {
+            "count": 1035,
+            "percent": 92.0
+          },
+          "fp2_time": {
+            "count": 1057,
+            "percent": 93.96
+          },
+          "fp3_date": {
+            "count": 1053,
+            "percent": 93.6
+          },
+          "fp3_time": {
+            "count": 1072,
+            "percent": 95.29
+          },
+          "quali_date": {
+            "count": 1035,
+            "percent": 92.0
+          },
+          "quali_time": {
+            "count": 1057,
+            "percent": 93.96
+          },
+          "sprint_date": {
+            "count": 1107,
+            "percent": 98.4
+          },
+          "sprint_time": {
+            "count": 1110,
+            "percent": 98.67
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "raceId"
+          ]
+        ],
+        "date_ranges": {
+          "year": {
+            "min": 1950,
+            "max": 2024
+          },
+          "date": {
+            "min": "1950-05-13 00:00:00",
+            "max": "2024-12-08 00:00:00"
+          },
+          "fp1_date": {
+            "min": "2021-03-26 00:00:00",
+            "max": "2024-12-06 00:00:00"
+          },
+          "fp2_date": {
+            "min": "2021-03-26 00:00:00",
+            "max": "2024-12-06 00:00:00"
+          },
+          "fp3_date": {
+            "min": "2021-03-27 00:00:00",
+            "max": "2024-12-07 00:00:00"
+          },
+          "quali_date": {
+            "min": "2021-03-27 00:00:00",
+            "max": "2024-12-07 00:00:00"
+          },
+          "sprint_date": {
+            "min": "2021-07-17 00:00:00",
+            "max": "2024-11-30 00:00:00"
+          }
+        },
+        "categorical_samples": {
+          "fp1_time": {
+            "nan": 1057,
+            "'11:30:00'": 18,
+            "'12:00:00'": 8,
+            "'09:30:00'": 6,
+            "'10:30:00'": 4,
+            "'17:30:00'": 4,
+            "'13:30:00'": 4,
+            "'18:00:00'": 3,
+            "'02:30:00'": 3,
+            "'18:30:00'": 3,
+            "'03:00:00'": 2,
+            "'14:30:00'": 2,
+            "'10:00:00'": 2,
+            "'01:30:00'": 2,
+            "'14:00:00'": 1,
+            "'11:00:00'": 1,
+            "'19:00:00'": 1,
+            "'15:30:00'": 1,
+            "'04:30:00'": 1,
+            "'03:30:00'": 1,
+            "'16:30:00'": 1
+          },
+          "fp2_time": {
+            "nan": 1057,
+            "'15:00:00'": 22,
+            "'13:00:00'": 8,
+            "'06:00:00'": 5,
+            "'21:00:00'": 4,
+            "'10:30:00'": 4,
+            "'14:00:00'": 4,
+            "'17:00:00'": 3,
+            "'21:30:00'": 3,
+            "'22:00:00'": 3,
+            "'05:00:00'": 2,
+            "'14:30:00'": 2,
+            "'15:30:00'": 1,
+            "'09:30:00'": 1,
+            "'18:00:00'": 1,
+            "'08:00:00'": 1,
+            "'07:30:00'": 1,
+            "'20:30:00'": 1,
+            "'18:30:00'": 1,
+            "'17:30:00'": 1
+          },
+          "fp3_time": {
+            "nan": 1072,
+            "'10:30:00'": 14,
+            "'11:00:00'": 9,
+            "'09:30:00'": 4,
+            "'16:30:00'": 3,
+            "'02:30:00'": 3,
+            "'17:00:00'": 3,
+            "'17:30:00'": 2,
+            "'01:30:00'": 2,
+            "'03:00:00'": 2,
+            "'10:00:00'": 2,
+            "'13:30:00'": 2,
+            "'12:00:00'": 1,
+            "'14:00:00'": 1,
+            "'11:30:00'": 1,
+            "'19:00:00'": 1,
+            "'04:30:00'": 1,
+            "'12:30:00'": 1,
+            "'08:30:00'": 1
+          },
+          "quali_time": {
+            "nan": 1057,
+            "'14:00:00'": 24,
+            "'20:00:00'": 7,
+            "'13:00:00'": 7,
+            "'15:00:00'": 6,
+            "'17:00:00'": 5,
+            "'06:00:00'": 5,
+            "'21:00:00'": 3,
+            "'22:00:00'": 2,
+            "'05:00:00'": 2,
+            "'18:00:00'": 2,
+            "'19:00:00'": 1,
+            "'08:00:00'": 1,
+            "'16:00:00'": 1,
+            "'07:00:00'": 1,
+            "'12:00:00'": 1
+          },
+          "sprint_date": {
+            "nan": 1107,
+            "'2021-07-17'": 1,
+            "'2021-09-11'": 1,
+            "'2021-11-13'": 1,
+            "'2022-04-23'": 1,
+            "'2022-07-09'": 1,
+            "'2022-11-12'": 1,
+            "'2023-04-29'": 1,
+            "'2023-07-01'": 1,
+            "'2023-07-29'": 1,
+            "'2023-10-07'": 1,
+            "'2023-10-21'": 1,
+            "'2023-11-04'": 1,
+            "'2024-04-20'": 1,
+            "'2024-05-04'": 1,
+            "'2024-06-29'": 1,
+            "'2024-10-19'": 1,
+            "'2024-11-02'": 1,
+            "'2024-11-30'": 1
+          },
+          "sprint_time": {
+            "nan": 1110,
+            "'14:30:00'": 4,
+            "'19:30:00'": 1,
+            "'13:30:00'": 1,
+            "'17:30:00'": 1,
+            "'22:00:00'": 1,
+            "'18:30:00'": 1,
+            "'03:00:00'": 1,
+            "'16:00:00'": 1,
+            "'10:00:00'": 1,
+            "'18:00:00'": 1,
+            "'14:00:00'": 1,
+            "'13:00:00'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\results.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 1721961,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 26759,
+        "columns": 18,
+        "column_types": {
+          "resultId": "int64",
+          "raceId": "int64",
+          "driverId": "int64",
+          "constructorId": "int64",
+          "number": "float64",
+          "grid": "int64",
+          "position": "float64",
+          "positionText": "object",
+          "positionOrder": "int64",
+          "points": "float64",
+          "laps": "int64",
+          "time": "object",
+          "milliseconds": "float64",
+          "fastestLap": "float64",
+          "rank": "float64",
+          "fastestLapTime": "object",
+          "fastestLapSpeed": "float64",
+          "statusId": "int64"
+        },
+        "missing": {
+          "resultId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "number": {
+            "count": 6,
+            "percent": 0.02
+          },
+          "grid": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 10953,
+            "percent": 40.93
+          },
+          "positionText": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "positionOrder": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "points": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "laps": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 19079,
+            "percent": 71.3
+          },
+          "milliseconds": {
+            "count": 19079,
+            "percent": 71.3
+          },
+          "fastestLap": {
+            "count": 18507,
+            "percent": 69.16
+          },
+          "rank": {
+            "count": 18249,
+            "percent": 68.2
+          },
+          "fastestLapTime": {
+            "count": 18507,
+            "percent": 69.16
+          },
+          "fastestLapSpeed": {
+            "count": 18507,
+            "percent": 69.16
+          },
+          "statusId": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "resultId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\seasons.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 4594,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 75,
+        "columns": 2,
+        "column_types": {
+          "year": "int64",
+          "url": "object"
+        },
+        "missing": {
+          "year": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "url": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [],
+        "date_ranges": {
+          "year": {
+            "min": 1950,
+            "max": 2024
+          }
+        },
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\sprint_results.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 24732,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 360,
+        "columns": 16,
+        "column_types": {
+          "resultId": "int64",
+          "raceId": "int64",
+          "driverId": "int64",
+          "constructorId": "int64",
+          "number": "int64",
+          "grid": "int64",
+          "position": "float64",
+          "positionText": "object",
+          "positionOrder": "int64",
+          "points": "int64",
+          "laps": "int64",
+          "time": "object",
+          "milliseconds": "float64",
+          "fastestLap": "float64",
+          "fastestLapTime": "object",
+          "statusId": "int64"
+        },
+        "missing": {
+          "resultId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "number": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "grid": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position": {
+            "count": 15,
+            "percent": 4.17
+          },
+          "positionText": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "positionOrder": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "points": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "laps": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 20,
+            "percent": 5.56
+          },
+          "milliseconds": {
+            "count": 20,
+            "percent": 5.56
+          },
+          "fastestLap": {
+            "count": 9,
+            "percent": 2.5
+          },
+          "fastestLapTime": {
+            "count": 9,
+            "percent": 2.5
+          },
+          "statusId": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "resultId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {
+          "positionText": {
+            "'1'": 18,
+            "'2'": 18,
+            "'3'": 18,
+            "'4'": 18,
+            "'5'": 18,
+            "'6'": 18,
+            "'7'": 18,
+            "'8'": 18,
+            "'9'": 18,
+            "'10'": 18,
+            "'11'": 18,
+            "'12'": 18,
+            "'13'": 18,
+            "'14'": 18,
+            "'15'": 18,
+            "'16'": 17,
+            "'17'": 17,
+            "'18'": 17,
+            "'19'": 15,
+            "'R'": 13,
+            "'20'": 9,
+            "'N'": 1,
+            "'W'": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\historical_f1\\status.csv",
+    "source": "historical_f1",
+    "format": "csv",
+    "size_bytes": 2136,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 139,
+        "columns": 2,
+        "column_types": {
+          "statusId": "int64",
+          "status": "object"
+        },
+        "missing": {
+          "statusId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "status": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "statusId"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\pit_stops\\submission (1).csv",
+    "source": "pit_stops",
+    "format": "csv",
+    "size_bytes": 4868261,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 188165,
+        "columns": 2,
+        "column_types": {
+          "id": "int64",
+          "PitNextLap": "float64"
+        },
+        "missing": {
+          "id": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "PitNextLap": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "id"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\pit_stops\\submission.csv",
+    "source": "pit_stops",
+    "format": "csv",
+    "size_bytes": 4868261,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 188165,
+        "columns": 2,
+        "column_types": {
+          "id": "int64",
+          "PitNextLap": "float64"
+        },
+        "missing": {
+          "id": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "PitNextLap": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "id"
+          ]
+        ],
+        "date_ranges": {},
+        "categorical_samples": {}
+      }
+    ]
+  },
+  {
+    "file": "data\\raw\\weather_tyre\\f1_all.parquet",
+    "source": "weather_tyre",
+    "format": "parquet",
+    "size_bytes": 728292,
+    "sheets": [
+      {
+        "name": "data",
+        "rows": 69230,
+        "columns": 29,
+        "column_types": {
+          "raceId": "int64",
+          "driverId": "int64",
+          "lap": "int64",
+          "position_x": "int64",
+          "time": "object",
+          "milliseconds": "int64",
+          "year": "int64",
+          "round": "int64",
+          "circuitId": "int64",
+          "name": "object",
+          "position_y": "float64",
+          "grid": "object",
+          "constructorId": "int64",
+          "statusId": "int64",
+          "status": "object",
+          "code": "object",
+          "Driver": "object",
+          "LapNumber": "int64",
+          "Compound": "object",
+          "TyreLife": "float64",
+          "FreshTyre": "bool",
+          "Stint": "float64",
+          "AirTemp": "float64",
+          "TrackTemp": "float64",
+          "Humidity": "float64",
+          "Pressure": "float64",
+          "Rainfall": "float64",
+          "WindSpeed": "float64",
+          "WindDirection": "float64"
+        },
+        "missing": {
+          "raceId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "driverId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "lap": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position_x": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "time": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "milliseconds": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "year": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "round": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "circuitId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "name": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "position_y": {
+            "count": 75,
+            "percent": 0.11
+          },
+          "grid": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "constructorId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "statusId": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "status": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "code": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Driver": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "LapNumber": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Compound": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "TyreLife": {
+            "count": 553,
+            "percent": 0.8
+          },
+          "FreshTyre": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Stint": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "AirTemp": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "TrackTemp": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Humidity": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Pressure": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "Rainfall": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "WindSpeed": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "WindDirection": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "duplicate_rows": 0,
+        "candidate_unique_keys": [
+          [
+            "raceId",
+            "driverId",
+            "lap"
+          ]
+        ],
+        "date_ranges": {
+          "year": {
+            "min": 2021,
+            "max": 2023
+          }
+        },
+        "categorical_samples": {
+          "name": {
+            "'Red Bull Ring'": 5308,
+            "'Circuit de Monaco'": 4107,
+            "'Circuit Park Zandvoort'": 4093,
+            "'Autódromo Hermanos Rodríguez'": 3917,
+            "'Circuit de Barcelona-Catalunya'": 3788,
+            "'Hungaroring'": 3615,
+            "'Bahrain International Circuit'": 3204,
+            "'Circuit of the Americas'": 3048,
+            "'Autodromo Nazionale di Monza'": 2813,
+            "'Baku City Circuit'": 2791,
+            "'Silverstone Circuit'": 2750,
+            "'Jeddah Corniche Circuit'": 2599,
+            "'Circuit Gilles Villeneuve'": 2577,
+            "'Autódromo José Carlos Pace'": 2466,
+            "'Autodromo Enzo e Dino Ferrari'": 2255,
+            "'Miami International Autodrome'": 2193,
+            "'Yas Marina Circuit'": 2155,
+            "'Losail International Circuit'": 2117,
+            "'Albert Park Grand Prix Circuit'": 2037,
+            "'Marina Bay Street Circuit'": 2025,
+            "'Circuit Paul Ricard'": 2004,
+            "'Circuit de Spa-Francorchamps'": 1625,
+            "'Suzuka Circuit'": 1384,
+            "'Autódromo Internacional do Algarve'": 1244,
+            "'Istanbul Park'": 1147,
+            "'Sochi Autodrom'": 1025,
+            "'Las Vegas Strip Street Circuit'": 943
+          },
+          "grid": {
+            "'3'": 3612,
+            "'7'": 3581,
+            "'2'": 3580,
+            "'6'": 3561,
+            "'11'": 3548,
+            "'10'": 3526,
+            "'9'": 3496,
+            "'4'": 3487,
+            "'1'": 3467,
+            "'16'": 3434,
+            "'5'": 3433,
+            "'12'": 3372,
+            "'18'": 3347,
+            "'8'": 3326,
+            "'15'": 3322,
+            "'14'": 3304,
+            "'17'": 3304,
+            "'13'": 3299,
+            "'19'": 3060,
+            "'20'": 2257,
+            "'0'": 1914
+          },
+          "code": {
+            "'VER'": 3678,
+            "'HAM'": 3657,
+            "'NOR'": 3641,
+            "'ALO'": 3571,
+            "'RUS'": 3504,
+            "'GAS'": 3483,
+            "'PER'": 3455,
+            "'SAI'": 3444,
+            "'STR'": 3440,
+            "'OCO'": 3378,
+            "'BOT'": 3371,
+            "'LEC'": 3352,
+            "'TSU'": 3253,
+            "'RIC'": 2821,
+            "'MAG'": 2244,
+            "'VET'": 2235,
+            "'LAT'": 2220,
+            "'ZHO'": 2176,
+            "'MSC'": 2149,
+            "'ALB'": 2121,
+            "'HUL'": 1357,
+            "'GIO'": 1254,
+            "'PIA'": 1185,
+            "'SAR'": 1142,
+            "'RAI'": 1061,
+            "'MAZ'": 1008,
+            "'DEV'": 614,
+            "'LAW'": 293,
+            "'KUB'": 123
+          },
+          "Driver": {
+            "'VER'": 3678,
+            "'HAM'": 3657,
+            "'NOR'": 3641,
+            "'ALO'": 3571,
+            "'RUS'": 3504,
+            "'GAS'": 3483,
+            "'PER'": 3455,
+            "'SAI'": 3444,
+            "'STR'": 3440,
+            "'OCO'": 3378,
+            "'BOT'": 3371,
+            "'LEC'": 3352,
+            "'TSU'": 3253,
+            "'RIC'": 2821,
+            "'MAG'": 2244,
+            "'VET'": 2235,
+            "'LAT'": 2220,
+            "'ZHO'": 2176,
+            "'MSC'": 2149,
+            "'ALB'": 2121,
+            "'HUL'": 1357,
+            "'GIO'": 1254,
+            "'PIA'": 1185,
+            "'SAR'": 1142,
+            "'RAI'": 1061,
+            "'MAZ'": 1008,
+            "'DEV'": 614,
+            "'LAW'": 293,
+            "'KUB'": 123
+          },
+          "Compound": {
+            "'HARD'": 29668,
+            "'MEDIUM'": 24965,
+            "'SOFT'": 9869,
+            "'INTERMEDIATE'": 3886,
+            "'WET'": 454,
+            "'None'": 368,
+            "'UNKNOWN'": 20
+          }
+        }
+      }
+    ]
+  }
+]

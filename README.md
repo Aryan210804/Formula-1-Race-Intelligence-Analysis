@@ -5,11 +5,14 @@ transformation, SQLite storage, and Tableau-compatible analytics.
 
 ## Verified data availability
 
-The existing project contains FastF1 JSON snapshots for the 2024 season
-schedule and Bahrain qualifying results. Earlier inventory checks did not find
-the three manually downloaded Kaggle datasets. Their schemas are not assumed.
-See [the dataset inventory](docs/dataset_inventory.md) for the previously
-verified paths and contents.
+The project includes local snapshots for the 2024 season schedule and Bahrain
+qualifying, all three configured Kaggle sources, and a reproducible historical
+SQLite build. The historical championship source covers 1950–2020; the separate
+weather/tyre source is analyzed at lap grain and is not assumed to join directly
+to historical race results. The files currently present cover 1950–2024 for race
+records, 2011–2024 for historical pit stops, and 2021–2023 for weather/tyre
+observations. See [the source inventory](reports/dataset_inventory.txt)
+and [metric definitions](docs/metric_definitions.md).
 
 ## Kaggle dataset downloads
 
@@ -100,8 +103,9 @@ tests/                             Offline unit and integration tests
 Python 3.10 or newer and pip are required. SQLite is included with Python.
 `pyproject.toml` defines the package and its dependencies. `requirements.txt`
 is the convenient setup command and installs this project, KaggleHub, Pandas,
-pytest, Parquet support, and Excel readers. Kaggle credentials are configured outside the
-repository; `.env` and credential files are Git-ignored.
+pytest, Parquet support, Excel readers, Streamlit, and Plotly. Kaggle
+credentials are configured outside the repository; `.env` and credential files
+are Git-ignored.
 
 In GitHub Codespaces, run:
 
@@ -126,9 +130,55 @@ f1-transform
 
 `f1-ingest` retrieves supported FastF1 data and persists raw JSON with
 provenance. `f1-transform` rebuilds SQLite tables from available FastF1 JSON
-and writes JSON/Markdown data-quality reports. The Kaggle download and
-inventory step is implemented; downstream Kaggle transformations and
-analytics remain gated on inspecting the actual downloaded schemas.
+and writes JSON/Markdown data-quality reports. The historical Kaggle pipeline
+and dashboard use a separate database, `data/processed/f1_intelligence.db`.
+
+## Local dashboard and historical analytics (Windows PowerShell)
+
+Run these from the repository root:
+
+```powershell
+python --version
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python scripts\download_datasets.py
+python scripts\inspect_datasets.py
+python scripts\build_database.py
+python scripts\export_tableau_data.py
+python -m pytest
+python -m streamlit run app.py
+```
+
+The downloader uses KaggleHub and may need Kaggle authentication for restricted
+sources; follow the secure token instructions above. If local source files are
+already staged, the inspect/build/export/dashboard steps run offline. The
+database build checks source columns, unique keys and foreign-key values, then
+atomically replaces its output only after validation. It does not delete or
+rewrite raw sources. The dashboard listens on Streamlit's local URL (normally
+`http://localhost:8501`).
+
+Tableau extracts are written under `data/exports/tableau/`, with one
+`.data_dictionary.md` per CSV. See
+[the Tableau implementation guide](docs/tableau_implementation_guide.md).
+The CSVs are extracts, not a generated Tableau workbook.
+
+Troubleshooting:
+
+- **Kaggle authentication error:** configure an API token outside the repo
+  using KaggleHub's documented environment or user config, then rerun download.
+- **Missing source file or schema:** rerun `scripts\inspect_datasets.py` and
+  verify the relevant files under `data\raw\`; the database builder reports the
+  exact missing path or columns.
+- **Database locked/rebuild issue:** stop another process using the database
+  and rerun `scripts\build_database.py`. The existing database is not replaced
+  when validation fails.
+- **Dashboard says database missing:** build it first with
+  `python scripts\build_database.py`.
+- **Tests fail at collection in `tests\test_settings.py`:** verify that file
+  does not contain stray editor text; this project has encountered local
+  uncommitted corruption in that test file before.
 
 ## Data and Git policy
 

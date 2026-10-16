@@ -16,6 +16,8 @@ dependencies = [
     "pandas>=2.0",
     "pyarrow>=14.0",
     "PyYAML>=6.0",
+    "plotly>=5.18",
+    "streamlit>=1.49",
     "xlrd>=2.0",
 ]
 
