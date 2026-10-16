@@ -12,6 +12,7 @@ from f1_intelligence.analytics import (
     driver_performance,
     pit_stop_summary,
     race_results,
+    reliability_summary,
 )
 from scripts.export_tableau_data import export_tableau_data
 from scripts.inspect_datasets import inspect_datasets
@@ -85,6 +86,18 @@ def test_filtering_changes_only_selected_dimensions(tables):
 def test_classified_finish_definition():
     status = pd.Series(["Finished", "+1 Lap", "+12 Laps", "Engine", None])
     assert classify_finish(status).tolist() == [True, True, True, False, False]
+
+
+def test_reliability_summary_counts_entries_and_classified_finishes(tables):
+    summary = reliability_summary(race_results(tables)).set_index("status")
+    assert summary.loc["Finished", ["entries", "classified_finishes"]].to_dict() == {
+        "entries": 2,
+        "classified_finishes": 2,
+    }
+    assert summary.loc["Engine", ["entries", "classified_finishes"]].to_dict() == {
+        "entries": 1,
+        "classified_finishes": 0,
+    }
 
 
 def test_dimension_duplicate_is_rejected(tables):

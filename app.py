@@ -17,6 +17,7 @@ from f1_intelligence.analytics import (
     load_tables,
     pit_stop_summary,
     race_results,
+    reliability_summary,
 )
 
 ROOT = Path(__file__).resolve().parent
@@ -388,7 +389,16 @@ def main() -> None:
         totals["non_finishes"] = totals["entries"] - totals["classified_finishes"]
         totals["completion_rate_pct"] = 100 * totals["classified_finishes"] / totals["entries"]
         chart(px.bar(totals, x="year", y=["classified_finishes", "non_finishes"], barmode="stack", title="Race-entry classifications"))
-        chart(px.bar(filtered.groupby("status", as_index=False).agg(entries=("raceId", "size")).sort_values("entries", ascending=False).head(25), x="entries", y="status", orientation="h", title="Official status labels"))
+        status_counts = reliability_summary(filtered.dropna(subset=["status"])).head(25)
+        chart(
+            px.bar(
+                status_counts,
+                x="entries",
+                y="status",
+                orientation="h",
+                title="Official status labels",
+            )
+        )
         st.caption("Completion rate denominator is race entries. 'Finished' and '+N Lap(s)' count as classified finishes.")
         display_table(totals, "reliability_by_season.csv")
 
