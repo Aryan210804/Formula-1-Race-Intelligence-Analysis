@@ -1,0 +1,7 @@
+-e .
+kagglehub>=0.3
+pandas>=2.0
+pytest>=7.4
+openpyxl>=3.1
+xlrd>=2.0
+pyarrow>=14.0

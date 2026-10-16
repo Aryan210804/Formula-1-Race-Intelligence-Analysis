@@ -1,0 +1,61 @@
+# Python bytecode and test/type-checker caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.temp
+
+# Kaggle credentials
+kaggle.json
+access_token
+
+# FastF1 and other local caches
+.cache/
+cache/
+.fastf1_cache/
+
+# Downloaded and generated data
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/kaggle/
+data/raw/kaggle/*
+!data/raw/kaggle/README.md
+# Kaggle downloads below data/raw/{pit_stops,weather_tyre,historical_f1}
+# are intentionally ignored because their size/licensing is not verified.
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/exports/*
+!data/exports/.gitkeep
+data/processed/quality/
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated model artifacts
+models/
+artifacts/
+*.joblib
+*.pkl
+*.pickle
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,30 @@
+paths:
+  raw_data: data/raw
+  kaggle_raw_data: data/raw/kaggle
+  fastf1_raw_data: data/raw/fastf1
+  interim_data: data/interim
+  processed_data: data/processed
+  exports: data/exports
+  sqlite_database: data/processed/f1_intelligence.sqlite3
+  quality_reports: data/processed/quality
+  fastf1_cache: .cache/fastf1
+
+ingestion:
+  start_year: 2018
+  end_year: null
+  sessions:
+    - Q
+    - R
+  download_scope:
+    - results
+    - laps
+    - pit_stops
+    - weather
+  historical_max_seasons: 3
+  max_attempts: 3
+  backoff_base_seconds: 1.0
+  backoff_max_seconds: 8.0
+  minimum_request_interval_seconds: 1.0
+
+logging:
+  level: INFO

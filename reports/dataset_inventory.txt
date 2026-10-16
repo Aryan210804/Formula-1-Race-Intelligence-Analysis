@@ -1,0 +1,193 @@
+Formula 1 Race Intelligence — Kaggle dataset inventory
+Authentication configured: no
+
+==============================================================================
+Dataset: anthonytherrien/predicting-f1-pit-stops-vault
+Label: Pit-stop data
+Destination: data/raw/pit_stops
+Status: SUCCESS
+Files discovered/staged: 2
+
+Dataset: anthonytherrien/predicting-f1-pit-stops-vault
+File: data/raw/pit_stops/submission (1).csv
+Format: CSV
+File size: 4868261 bytes
+Rows: 188165
+Columns: 2
+Column details: id (int64, missing=0), PitNextLap (float64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: anthonytherrien/predicting-f1-pit-stops-vault
+File: data/raw/pit_stops/submission.csv
+Format: CSV
+File size: 4868261 bytes
+Rows: 188165
+Columns: 2
+Column details: id (int64, missing=0), PitNextLap (float64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+==============================================================================
+Dataset: navenkumar1998/formula-1-dataset-with-weather-and-tyre-features
+Label: Weather and tyre features
+Destination: data/raw/weather_tyre
+Status: SUCCESS
+Files discovered/staged: 1
+
+Dataset: navenkumar1998/formula-1-dataset-with-weather-and-tyre-features
+File: data/raw/weather_tyre/f1_all.parquet
+Format: Parquet
+File size: 728292 bytes
+Rows: 69230
+Columns: 29
+Column details: raceId (int64, missing=0), driverId (int64, missing=0), lap (int64, missing=0), position_x (int64, missing=0), time (object, missing=0), milliseconds (int64, missing=0), year (int64, missing=0), round (int64, missing=0), circuitId (int64, missing=0), name (object, missing=0), position_y (float64, missing=75), grid (object, missing=0), constructorId (int64, missing=0), statusId (int64, missing=0), status (object, missing=0), code (object, missing=0), Driver (object, missing=0), LapNumber (int64, missing=0), Compound (object, missing=0), TyreLife (float64, missing=553), FreshTyre (bool, missing=0), Stint (float64, missing=0), AirTemp (float64, missing=0), TrackTemp (float64, missing=0), Humidity (float64, missing=0), Pressure (float64, missing=0), Rainfall (float64, missing=0), WindSpeed (float64, missing=0), WindDirection (float64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+==============================================================================
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+Label: Historical Formula 1 data
+Destination: data/raw/historical_f1
+Status: SUCCESS
+Files discovered/staged: 14
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/circuits.csv
+Format: CSV
+File size: 10104 bytes
+Rows: 77
+Columns: 9
+Column details: circuitId (int64, missing=0), circuitRef (object, missing=0), name (object, missing=0), location (object, missing=0), country (object, missing=0), lat (float64, missing=0), lng (float64, missing=0), alt (int64, missing=0), url (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/constructor_results.csv
+Format: CSV
+File size: 219365 bytes
+Rows: 12625
+Columns: 5
+Column details: constructorResultsId (int64, missing=0), raceId (int64, missing=0), constructorId (int64, missing=0), points (float64, missing=0), status (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/constructor_standings.csv
+Format: CSV
+File size: 317206 bytes
+Rows: 13391
+Columns: 7
+Column details: constructorStandingsId (int64, missing=0), raceId (int64, missing=0), constructorId (int64, missing=0), points (float64, missing=0), position (int64, missing=0), positionText (object, missing=0), wins (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/constructors.csv
+Format: CSV
+File size: 17478 bytes
+Rows: 212
+Columns: 5
+Column details: constructorId (int64, missing=0), constructorRef (object, missing=0), name (object, missing=0), nationality (object, missing=0), url (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/driver_standings.csv
+Format: CSV
+File size: 883771 bytes
+Rows: 34863
+Columns: 7
+Column details: driverStandingsId (int64, missing=0), raceId (int64, missing=0), driverId (int64, missing=0), points (float64, missing=0), position (int64, missing=0), positionText (object, missing=0), wins (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/drivers.csv
+Format: CSV
+File size: 94367 bytes
+Rows: 861
+Columns: 9
+Column details: driverId (int64, missing=0), driverRef (object, missing=0), number (object, missing=0), code (object, missing=0), forename (object, missing=0), surname (object, missing=0), dob (object, missing=0), nationality (object, missing=0), url (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/lap_times.csv
+Format: CSV
+File size: 17622395 bytes
+Rows: 589081
+Columns: 6
+Column details: raceId (int64, missing=0), driverId (int64, missing=0), lap (int64, missing=0), position (int64, missing=0), time (object, missing=0), milliseconds (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/pit_stops.csv
+Format: CSV
+File size: 443719 bytes
+Rows: 11371
+Columns: 7
+Column details: raceId (int64, missing=0), driverId (int64, missing=0), stop (int64, missing=0), lap (int64, missing=0), time (object, missing=0), duration (object, missing=0), milliseconds (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/qualifying.csv
+Format: CSV
+File size: 465231 bytes
+Rows: 10494
+Columns: 9
+Column details: qualifyId (int64, missing=0), raceId (int64, missing=0), driverId (int64, missing=0), constructorId (int64, missing=0), number (int64, missing=0), position (int64, missing=0), q1 (object, missing=0), q2 (object, missing=22), q3 (object, missing=46)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/races.csv
+Format: CSV
+File size: 164344 bytes
+Rows: 1125
+Columns: 18
+Column details: raceId (int64, missing=0), year (int64, missing=0), round (int64, missing=0), circuitId (int64, missing=0), name (object, missing=0), date (object, missing=0), time (object, missing=0), url (object, missing=0), fp1_date (object, missing=0), fp1_time (object, missing=0), fp2_date (object, missing=0), fp2_time (object, missing=0), fp3_date (object, missing=0), fp3_time (object, missing=0), quali_date (object, missing=0), quali_time (object, missing=0), sprint_date (object, missing=0), sprint_time (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/results.csv
+Format: CSV
+File size: 1721961 bytes
+Rows: 26759
+Columns: 18
+Column details: resultId (int64, missing=0), raceId (int64, missing=0), driverId (int64, missing=0), constructorId (int64, missing=0), number (object, missing=0), grid (int64, missing=0), position (object, missing=0), positionText (object, missing=0), positionOrder (int64, missing=0), points (float64, missing=0), laps (int64, missing=0), time (object, missing=0), milliseconds (object, missing=0), fastestLap (object, missing=0), rank (object, missing=0), fastestLapTime (object, missing=0), fastestLapSpeed (object, missing=0), statusId (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/seasons.csv
+Format: CSV
+File size: 4594 bytes
+Rows: 75
+Columns: 2
+Column details: year (int64, missing=0), url (object, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/sprint_results.csv
+Format: CSV
+File size: 24732 bytes
+Rows: 360
+Columns: 16
+Column details: resultId (int64, missing=0), raceId (int64, missing=0), driverId (int64, missing=0), constructorId (int64, missing=0), number (int64, missing=0), grid (int64, missing=0), position (object, missing=0), positionText (object, missing=0), positionOrder (int64, missing=0), points (int64, missing=0), laps (int64, missing=0), time (object, missing=0), milliseconds (object, missing=0), fastestLap (object, missing=0), fastestLapTime (object, missing=0), statusId (int64, missing=0)
+Duplicate rows: 0
+Read errors: none
+
+Dataset: rohanrao/formula-1-world-championship-1950-2020
+File: data/raw/historical_f1/status.csv
+Format: CSV
+File size: 2136 bytes
+Rows: 139
+Columns: 2
+Column details: statusId (int64, missing=0), status (object, missing=0)
+Duplicate rows: 0
+Read errors: none
