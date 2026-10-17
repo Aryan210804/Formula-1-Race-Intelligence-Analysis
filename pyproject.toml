@@ -17,6 +17,8 @@ dependencies = [
     "pyarrow>=14.0",
     "PyYAML>=6.0",
     "plotly>=5.18",
+    "psycopg[binary]>=3.1",
+    "SQLAlchemy>=2.0",
     "streamlit>=1.49",
     "xlrd>=2.0",
 ]

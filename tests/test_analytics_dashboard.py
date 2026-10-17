@@ -5,7 +5,7 @@ import sqlite3
 import pandas as pd
 import pytest
 
-from f1_intelligence.analytics import load_tables
+from f1_intelligence.analytics import load_tables, normalize_database_url
 from f1_intelligence.analytics import (
     apply_filters,
     classify_finish,
@@ -16,6 +16,7 @@ from f1_intelligence.analytics import (
 )
 from scripts.export_tableau_data import export_tableau_data
 from scripts.inspect_datasets import inspect_datasets
+from scripts.sync_database import sync_database
 
 
 @pytest.fixture
@@ -150,6 +151,61 @@ def test_optional_database_tables_are_reported(tmp_path):
     tables, missing = load_tables(database)
     assert len(tables) == 6
     assert "pit_stops" in missing and "weather_tyre" in missing
+
+
+def test_load_tables_accepts_sqlalchemy_database_url(tmp_path, tables):
+    database = tmp_path / "analytics.db"
+    with sqlite3.connect(database) as connection:
+        for name, frame in tables.items():
+            frame.to_sql(name, connection, index=False)
+    database_url = f"sqlite:///{database.as_posix()}"
+
+    loaded, missing = load_tables(database_url)
+
+    assert len(loaded["results"]) == len(tables["results"])
+    assert "weather_tyre" in missing
+
+
+def test_sync_database_copies_all_tables_and_can_refresh_destination(tmp_path, tables):
+    source = tmp_path / "source.db"
+    destination = tmp_path / "destination.db"
+    with sqlite3.connect(source) as connection:
+        for name, frame in tables.items():
+            frame.to_sql(name, connection, index=False)
+    destination_url = f"sqlite:///{destination.as_posix()}"
+
+    counts = sync_database(source, destination_url)
+    with sqlite3.connect(source) as connection:
+        connection.execute("DELETE FROM results")
+    refreshed_counts = sync_database(source, destination_url)
+    loaded, _ = load_tables(destination_url)
+
+    assert counts["results"] == 4
+    assert refreshed_counts["results"] == 0
+    assert loaded["results"].empty
+
+
+def test_sync_database_refuses_to_replace_unrelated_destination_tables(tmp_path, tables):
+    source = tmp_path / "source.db"
+    destination = tmp_path / "destination.db"
+    with sqlite3.connect(source) as connection:
+        for name, frame in tables.items():
+            frame.to_sql(name, connection, index=False)
+    with sqlite3.connect(destination) as connection:
+        connection.execute("CREATE TABLE unrelated (value TEXT)")
+        connection.execute("INSERT INTO unrelated VALUES ('keep')")
+
+    with pytest.raises(ValueError, match="unrelated tables"):
+        sync_database(source, f"sqlite:///{destination.as_posix()}")
+
+    with sqlite3.connect(destination) as connection:
+        assert connection.execute("SELECT value FROM unrelated").fetchone() == ("keep",)
+
+
+def test_normalize_database_url_uses_psycopg_driver():
+    assert normalize_database_url(
+        "postgresql://user:password@host:5432/database"
+    ) == "postgresql+psycopg://user:password@host:5432/database"
 
 
 def test_tableau_exports_preserve_expected_grains_and_dictionaries(tmp_path, tables):

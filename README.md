@@ -159,6 +159,33 @@ atomically replaces its output only after validation. It does not delete or
 rewrite raw sources. The dashboard listens on Streamlit's local URL (normally
 `http://localhost:8501`).
 
+## Shared database on Streamlit
+
+The dashboard uses the local SQLite database by default. Streamlit deployments
+do not provide durable shared local files, so configure a hosted PostgreSQL
+database to make the dashboard use the same data across deployments and users:
+
+1. Create a PostgreSQL database with your hosting provider.
+2. Build the local dashboard database with `python scripts\build_database.py`.
+3. Set `DATABASE_URL` to the provider's connection URL and run
+   `python scripts\sync_database.py` once to copy all dashboard tables to the
+   hosted database. The script replaces only known dashboard tables and rolls
+   back the copy if an error occurs.
+4. In Streamlit Cloud, add this to the app's Secrets settings, using the same
+   URL (the username, password, and host are provided by your database host):
+
+   ```toml
+   [database]
+   url = "postgresql://USERNAME:PASSWORD@HOST:5432/DATABASE?sslmode=require"
+   ```
+
+The dashboard automatically uses `[database].url` when configured; the
+`DATABASE_URL` environment variable is also supported. Keep credentials in
+Streamlit Secrets or environment variables, never in source control. The local
+SQLite workflow is unchanged when no hosted database is configured. The
+dashboard reads hosted data; to publish a refreshed local database, rerun the
+sync script with the same connection URL.
+
 Tableau extracts are written under `data/exports/tableau/`, with one
 `.data_dictionary.md` per CSV. See
 [the Tableau implementation guide](docs/tableau_implementation_guide.md).

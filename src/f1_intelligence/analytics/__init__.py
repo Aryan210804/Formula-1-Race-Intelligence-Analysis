@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import sqlite3
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 import pandas as pd
+from sqlalchemy import create_engine, inspect
+from sqlalchemy.engine import make_url
 
 
 CORE_TABLES = ("circuits", "races", "drivers", "constructors", "status", "results")
@@ -19,28 +21,62 @@ OPTIONAL_TABLES = (
     "lap_times",
     "qualifying",
 )
+DASHBOARD_TABLES = CORE_TABLES + OPTIONAL_TABLES
 
 
-def load_tables(database: Path) -> tuple[dict[str, pd.DataFrame], list[str]]:
-    """Read known tables from a database; report absent optional sources explicitly."""
-    if not database.is_file():
+def normalize_database_url(database_url: str) -> str:
+    """Select psycopg 3 explicitly for hosted PostgreSQL URLs."""
+    if database_url.startswith("postgres://"):
+        return database_url.replace("postgres://", "postgresql+psycopg://", 1)
+    if database_url.startswith("postgresql://"):
+        return database_url.replace("postgresql://", "postgresql+psycopg://", 1)
+    return database_url
+
+
+def load_tables(database: Path | str) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    """Read known tables from SQLite or a SQLAlchemy database URL."""
+    if isinstance(database, str) and "://" in database:
+        return _load_url_tables(database)
+    database_path = Path(database)
+    if not database_path.is_file():
         raise FileNotFoundError(
-            f"Analytical database not found: {database}. Run scripts/build_database.py first."
+            f"Analytical database not found: {database_path}. "
+            "Run scripts/build_database.py first."
         )
-    tables: dict[str, pd.DataFrame] = {}
-    missing: list[str] = []
-    with sqlite3.connect(database) as connection:
+    with sqlite3.connect(database_path) as connection:
         existing = {
             row[0]
             for row in connection.execute(
                 "SELECT name FROM sqlite_master WHERE type = 'table'"
             )
         }
-        for name in (*CORE_TABLES, *OPTIONAL_TABLES):
-            if name in existing:
-                tables[name] = pd.read_sql_query(f'SELECT * FROM "{name}"', connection)
-            else:
-                missing.append(name)
+        return _read_known_tables(connection, existing)
+
+
+def _load_url_tables(database_url: str) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    """Read dashboard tables through a SQLAlchemy connection URL."""
+    normalized_url = normalize_database_url(database_url)
+    url = make_url(normalized_url)
+    if url.drivername.startswith("postgresql") and not url.drivername.endswith("psycopg"):
+        raise ValueError("PostgreSQL DATABASE_URL must use the psycopg 3 driver")
+    engine = create_engine(normalized_url, pool_pre_ping=True)
+    try:
+        with engine.connect() as connection:
+            return _read_known_tables(connection, set(inspect(connection).get_table_names()))
+    finally:
+        engine.dispose()
+
+
+def _read_known_tables(
+    connection: Any, existing: set[str]
+) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    tables: dict[str, pd.DataFrame] = {}
+    missing: list[str] = []
+    for name in DASHBOARD_TABLES:
+        if name in existing:
+            tables[name] = pd.read_sql_query(f'SELECT * FROM "{name}"', connection)
+        else:
+            missing.append(name)
     absent_core = set(CORE_TABLES) & set(missing)
     if absent_core:
         raise ValueError(f"Database is missing required analytical tables: {sorted(absent_core)}")

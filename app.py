@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import os
+from collections.abc import Mapping
 from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from sqlalchemy.exc import SQLAlchemyError
+from streamlit.errors import StreamlitSecretNotFoundError
 
 from f1_intelligence.analytics import (
     apply_filters,
@@ -15,6 +19,7 @@ from f1_intelligence.analytics import (
     country_race_counts,
     driver_performance,
     load_tables,
+    normalize_database_url,
     pit_stop_summary,
     race_results,
     reliability_summary,
@@ -26,11 +31,29 @@ ACCENT = "#C8102E"
 st.set_page_config(page_title="Formula 1 Race Intelligence", layout="wide")
 
 
-@st.cache_data(show_spinner="Loading validated race data...")
-def get_data(database_path: str, modified_ns: int):
+@st.cache_data(ttl=300, show_spinner="Loading validated race data...")
+def get_data(database_path: str, modified_ns: int | None):
     del modified_ns
-    tables, missing = load_tables(Path(database_path))
+    tables, missing = load_tables(database_path)
     return tables, missing, race_results(tables)
+
+
+def configured_database() -> tuple[str, bool]:
+    """Prefer the hosted database secret, while keeping local SQLite as the default."""
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
+        try:
+            database_settings = st.secrets.get("database", {})
+        except StreamlitSecretNotFoundError:
+            database_settings = {}
+        if not isinstance(database_settings, Mapping):
+            raise ValueError("The [database] Streamlit secret must be a TOML section")
+        database_url = database_settings.get("url")
+    if database_url is not None:
+        if not isinstance(database_url, str) or not database_url.strip():
+            raise ValueError("DATABASE_URL or [database].url must be a non-empty string")
+        return normalize_database_url(database_url.strip()), True
+    return str(DATABASE), False
 
 
 def chart(fig) -> None:
@@ -196,13 +219,26 @@ def main() -> None:
     )
     st.title("Formula 1 Race Intelligence")
     st.caption("Historical championship results and locally available strategy observations.")
-    if not DATABASE.is_file():
+    try:
+        database_source, is_shared_database = configured_database()
+    except ValueError as exc:
+        st.error(f"Invalid database configuration: {exc}")
+        st.stop()
+    if is_shared_database:
+        st.caption("Connected to the shared hosted database.")
+    else:
+        st.info(
+            "Using local SQLite data. For shared data on Streamlit, configure "
+            "a hosted PostgreSQL database in Streamlit Secrets."
+        )
+    if not is_shared_database and not DATABASE.is_file():
         st.warning("The analytical database has not been built yet.")
         st.code(r".\.venv\Scripts\python.exe scripts\build_database.py")
         st.stop()
     try:
-        tables, missing, results = get_data(str(DATABASE), DATABASE.stat().st_mtime_ns)
-    except (OSError, ValueError, KeyError) as exc:
+        modified_ns = None if is_shared_database else DATABASE.stat().st_mtime_ns
+        tables, missing, results = get_data(database_source, modified_ns)
+    except (OSError, SQLAlchemyError, ValueError, KeyError) as exc:
         st.error(f"Unable to load the analytical database: {exc}")
         st.stop()
     if results.empty:
