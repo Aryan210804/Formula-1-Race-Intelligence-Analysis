@@ -106,6 +106,10 @@ ingestion:
             "start_year and end_year must be integer years",
         ),
         (
+            "ingestion:\n  start_year: 2020\n  end_year: 0\n  sessions: [R]\n  download_scope: [results]\n",
+            "Invalid configured season range",
+        ),
+        (
             "logging:\n  level: TRACE\n",
             "logging.level must be",
         ),

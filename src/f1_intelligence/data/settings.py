@@ -66,24 +66,32 @@ class IngestionSettings:
             if config_path.parent.name.casefold() == "config"
             else config_path.parent
         )
-        paths = config.get("paths", {})
-        ingestion = config.get("ingestion", {})
-        logging_config = config.get("logging", {})
+        paths = config.get("paths") or {}
+        ingestion = config.get("ingestion") or {}
+        logging_config = config.get("logging") or {}
         if not isinstance(paths, dict) or not isinstance(ingestion, dict):
             raise ConfigurationError("'paths' and 'ingestion' must be YAML mappings")
         if not isinstance(logging_config, dict):
             raise ConfigurationError("'logging' must be a YAML mapping")
+        start_year_raw = ingestion.get("start_year")
+        if start_year_raw is None:
+            start_year_raw = 2018
+        end_year_raw = ingestion.get("end_year")
         try:
-            start_year = int(ingestion.get("start_year", 2018))
-            end_year = int(ingestion.get("end_year") or datetime.now().year)
+            start_year = int(start_year_raw)
+            end_year = (
+                datetime.now().year if end_year_raw is None else int(end_year_raw)
+            )
         except (TypeError, ValueError) as exc:
             raise ConfigurationError(
                 "ingestion.start_year and end_year must be integer years"
             ) from exc
-        configured_sessions = ingestion.get("sessions", ("Q", "R"))
-        configured_scope = ingestion.get(
-            "download_scope", ("results", "laps", "pit_stops", "weather")
-        )
+        configured_sessions = ingestion.get("sessions")
+        if configured_sessions is None:
+            configured_sessions = ("Q", "R")
+        configured_scope = ingestion.get("download_scope")
+        if configured_scope is None:
+            configured_scope = ("results", "laps", "pit_stops", "weather")
         if isinstance(configured_sessions, str) or not isinstance(
             configured_sessions, (list, tuple)
         ):
