@@ -18,9 +18,9 @@ from f1_intelligence.analytics import (
     pit_stop_summary,
     race_results,
 )
+from f1_intelligence.paths import DEFAULT_DATABASE_PATH
 
-ROOT = Path(__file__).resolve().parent
-DATABASE = ROOT / "data" / "processed" / "f1_intelligence.db"
+DATABASE = DEFAULT_DATABASE_PATH
 ACCENT = "#C8102E"
 st.set_page_config(page_title="Formula 1 Race Intelligence", layout="wide")
 
@@ -196,8 +196,20 @@ def main() -> None:
     st.title("Formula 1 Race Intelligence")
     st.caption("Historical championship results and locally available strategy observations.")
     if not DATABASE.is_file():
-        st.warning("The analytical database has not been built yet.")
-        st.code(r".\.venv\Scripts\python.exe scripts\build_database.py")
+        expected_path = DATABASE.resolve()
+        if os.name == "nt":
+            st.error(
+                "The analytical SQLite database was not found at the expected "
+                f"local path: {expected_path}. Check the configured path and "
+                "build it if the source datasets are available."
+            )
+            st.code(r".\.venv\Scripts\python.exe scripts\build_database.py")
+        else:
+            st.error(
+                "The analytical database is missing from this deployment. "
+                "Verify that data/processed/f1_intelligence.db is included in "
+                "the deployed GitHub branch."
+            )
         st.stop()
     try:
         tables, missing, results = get_data(str(DATABASE), DATABASE.stat().st_mtime_ns)

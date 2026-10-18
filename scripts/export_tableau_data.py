@@ -16,6 +16,11 @@ from f1_intelligence.analytics import (
     pit_stop_summary,
     race_results,
 )
+from f1_intelligence.paths import (
+    DEFAULT_DATABASE_PATH,
+    PROJECT_ROOT,
+    resolve_project_path,
+)
 
 DICTIONARIES = {
     "race_summary": (
@@ -154,16 +159,20 @@ def export_tableau_data(database: Path, output: Path) -> dict[str, int]:
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--database", type=Path, default=Path("data/processed/f1_intelligence.db"))
-    parser.add_argument("--output", type=Path, default=Path("data/exports/tableau"))
+    parser.add_argument("--database", type=Path, default=DEFAULT_DATABASE_PATH)
+    parser.add_argument(
+        "--output", type=Path, default=PROJECT_ROOT / "data" / "exports" / "tableau"
+    )
     args = parser.parse_args(argv)
+    database_path = resolve_project_path(args.database)
+    output_path = resolve_project_path(args.output)
     try:
-        counts = export_tableau_data(args.database, args.output)
+        counts = export_tableau_data(database_path, output_path)
     except (FileNotFoundError, ValueError, OSError, sqlite3.Error) as exc:
         parser.error(str(exc))
     for name, count in counts.items():
         print(f"{name}: {count:,} rows")
-    print(f"Tableau extracts written to {args.output.resolve()}")
+    print(f"Tableau extracts written to {output_path}")
     return 0
 
 

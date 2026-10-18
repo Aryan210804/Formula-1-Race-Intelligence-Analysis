@@ -1,10 +1,16 @@
 """Known-value checks for analytical metrics and safe data joins."""
 
 import sqlite3
+from pathlib import Path
+from typing import Any
 
 import pandas as pd
 import pytest
 
+import f1_intelligence.analytics as analytics
+from scripts.build_database import main as build_database_main
+from scripts.export_tableau_data import export_tableau_data
+from scripts.inspect_datasets import inspect_datasets
 from f1_intelligence.analytics import load_tables
 from f1_intelligence.analytics import (
     apply_filters,
@@ -12,9 +18,27 @@ from f1_intelligence.analytics import (
     driver_performance,
     pit_stop_summary,
     race_results,
+    tyre_summary,
 )
-from scripts.export_tableau_data import export_tableau_data
-from scripts.inspect_datasets import inspect_datasets
+from f1_intelligence.database import DatabaseBuildError, build_database
+from f1_intelligence.paths import (
+    DEFAULT_DATABASE_PATH,
+    PROJECT_ROOT,
+    resolve_project_path,
+)
+
+
+def _create_core_schema(connection: sqlite3.Connection) -> None:
+    schemas = {
+        "circuits": "circuitId INTEGER, name TEXT, country TEXT",
+        "races": "raceId INTEGER, year INTEGER, round INTEGER, name TEXT, date TEXT, circuitId INTEGER",
+        "drivers": "driverId INTEGER, forename TEXT, surname TEXT, nationality TEXT",
+        "constructors": "constructorId INTEGER, name TEXT",
+        "status": "statusId INTEGER, status TEXT",
+        "results": "raceId INTEGER, driverId INTEGER, constructorId INTEGER, positionOrder INTEGER, points REAL, statusId INTEGER",
+    }
+    for table, columns in schemas.items():
+        connection.execute(f'CREATE TABLE "{table}" ({columns})')
 
 
 @pytest.fixture
@@ -112,6 +136,133 @@ def test_inventory_database_tables_keep_relational_constraints(project_root):
     with sqlite3.connect(path) as connection:
         assert connection.execute("SELECT COUNT(*) FROM results").fetchone()[0] == 26759
         assert connection.execute("PRAGMA foreign_key_check").fetchall() == []
+    loaded, missing = load_tables(path)
+    results = race_results(loaded)
+    assert len(results) == 26759
+    assert results["year"].min() == 1950
+    assert results["year"].max() == 2024
+    assert not driver_performance(results).empty
+    assert not pit_stop_summary(loaded).empty
+    assert not tyre_summary(loaded).empty
+    assert not missing
+
+
+def test_default_database_path_and_relative_paths_use_repository_root(
+    project_root: Path,
+) -> None:
+    assert PROJECT_ROOT == project_root
+    assert DEFAULT_DATABASE_PATH == (
+        project_root / "data" / "processed" / "f1_intelligence.db"
+    )
+    assert resolve_project_path(Path("data/processed/custom.db")) == (
+        project_root / "data" / "processed" / "custom.db"
+    )
+
+
+def test_load_tables_reports_missing_database_with_resolved_path(tmp_path: Path) -> None:
+    missing = tmp_path / "missing.db"
+
+    with pytest.raises(FileNotFoundError) as error:
+        load_tables(missing)
+    assert str(missing.resolve()) in str(error.value)
+
+
+def test_load_tables_rejects_corrupt_database(tmp_path: Path) -> None:
+    database = tmp_path / "corrupt.db"
+    database.write_text("not a SQLite database", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="Unable to read analytical SQLite database"):
+        load_tables(database)
+
+
+def test_load_tables_rejects_missing_required_tables(tmp_path: Path) -> None:
+    database = tmp_path / "incomplete.db"
+    with sqlite3.connect(database) as connection:
+        connection.execute("CREATE TABLE results (raceId INTEGER)")
+
+    with pytest.raises(ValueError, match="missing required analytical tables"):
+        load_tables(database)
+
+
+def test_load_tables_closes_connection_when_validation_fails(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    database = tmp_path / "incomplete.db"
+    with sqlite3.connect(database) as connection:
+        connection.execute("CREATE TABLE results (raceId INTEGER)")
+    original_connect = sqlite3.connect
+    opened = []
+
+    class TrackedConnection:
+        def __init__(self, connection: sqlite3.Connection) -> None:
+            self.connection = connection
+            self.closed = False
+
+        def close(self) -> None:
+            self.closed = True
+            self.connection.close()
+
+        def __getattr__(self, name: str):
+            return getattr(self.connection, name)
+
+    def track_connection(*args: Any, **kwargs: Any) -> TrackedConnection:
+        tracked = TrackedConnection(original_connect(*args, **kwargs))
+        opened.append(tracked)
+        return tracked
+
+    monkeypatch.setattr(analytics.sqlite3, "connect", track_connection)
+
+    with pytest.raises(ValueError, match="missing required analytical tables"):
+        load_tables(database)
+
+    assert len(opened) == 1
+    assert opened[0].closed
+
+
+def test_load_tables_rejects_missing_required_columns(tmp_path: Path) -> None:
+    database = tmp_path / "incompatible.db"
+    with sqlite3.connect(database) as connection:
+        _create_core_schema(connection)
+        connection.execute("ALTER TABLE results RENAME COLUMN raceId TO event_id")
+
+    with pytest.raises(ValueError, match="table 'results' is missing required columns"):
+        load_tables(database)
+
+
+def test_database_build_failure_preserves_existing_database(tmp_path: Path) -> None:
+    database = tmp_path / "existing.db"
+    with sqlite3.connect(database) as connection:
+        connection.execute("CREATE TABLE keep (value TEXT)")
+        connection.execute("INSERT INTO keep VALUES ('existing')")
+    original = database.read_bytes()
+
+    with pytest.raises(DatabaseBuildError, match="Required source table is missing"):
+        build_database(tmp_path / "raw", database)
+
+    assert database.read_bytes() == original
+
+
+def test_database_build_cli_defaults_are_rooted_independent_of_cwd(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    received: dict[str, Path] = {}
+
+    def fake_build(
+        raw_root: Path, database_path: Path, *, include_weather: bool
+    ) -> dict[str, int]:
+        received["raw_root"] = raw_root
+        received["database"] = database_path
+        assert include_weather
+        return {"results": 1}
+
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr("scripts.build_database.build_database", fake_build)
+
+    assert build_database_main([]) == 0
+    assert received == {
+        "raw_root": PROJECT_ROOT / "data" / "raw",
+        "database": DEFAULT_DATABASE_PATH,
+    }
 
 
 def test_dataset_inspection_reports_file_shape_and_missing_values(tmp_path):
@@ -132,8 +283,7 @@ def test_dataset_inspection_reports_file_shape_and_missing_values(tmp_path):
 def test_optional_database_tables_are_reported(tmp_path):
     database = tmp_path / "minimal.db"
     with sqlite3.connect(database) as connection:
-        for table in ("circuits", "races", "drivers", "constructors", "status", "results"):
-            connection.execute(f'CREATE TABLE "{table}" (value INTEGER)')
+        _create_core_schema(connection)
     tables, missing = load_tables(database)
     assert len(tables) == 6
     assert "pit_stops" in missing and "weather_tyre" in missing

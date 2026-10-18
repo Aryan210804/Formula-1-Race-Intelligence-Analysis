@@ -46,6 +46,7 @@ data/processed/quality/
 *.db
 *.sqlite
 *.sqlite3
+!data/processed/f1_intelligence.db
 
 # Generated model artifacts
 models/

@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from typing import Iterable
 
 import pandas as pd
+
+from f1_intelligence.paths import DEFAULT_DATABASE_PATH
 
 
 CORE_TABLES = ("circuits", "races", "drivers", "constructors", "status", "results")
@@ -19,31 +22,82 @@ OPTIONAL_TABLES = (
     "lap_times",
     "qualifying",
 )
+REQUIRED_COLUMNS = {
+    "circuits": {"circuitId", "name", "country"},
+    "races": {"raceId", "year", "round", "name", "date", "circuitId"},
+    "drivers": {"driverId", "forename", "surname", "nationality"},
+    "constructors": {"constructorId", "name"},
+    "status": {"statusId", "status"},
+    "results": {
+        "raceId",
+        "driverId",
+        "constructorId",
+        "positionOrder",
+        "points",
+        "statusId",
+    },
+    "constructor_results": {"raceId", "constructorId", "points"},
+    "constructor_standings": {"raceId", "constructorId", "points"},
+    "driver_standings": {"raceId", "driverId", "points"},
+    "pit_stops": {"raceId", "driverId", "stop", "milliseconds"},
+    "weather_tyre": {"year", "Compound", "lap", "milliseconds"},
+    "lap_times": {"raceId", "milliseconds"},
+    "qualifying": {"raceId", "driverId", "constructorId", "position"},
+}
 
 
-def load_tables(database: Path) -> tuple[dict[str, pd.DataFrame], list[str]]:
-    """Read known tables from a database; report absent optional sources explicitly."""
+def load_tables(
+    database: Path = DEFAULT_DATABASE_PATH,
+) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    """Read and validate known tables without modifying the SQLite database."""
+    database = database.resolve()
     if not database.is_file():
         raise FileNotFoundError(
-            f"Analytical database not found: {database}. Run scripts/build_database.py first."
+            f"Analytical database not found: {database}"
         )
     tables: dict[str, pd.DataFrame] = {}
     missing: list[str] = []
-    with sqlite3.connect(database) as connection:
-        existing = {
-            row[0]
-            for row in connection.execute(
-                "SELECT name FROM sqlite_master WHERE type = 'table'"
-            )
-        }
-        for name in (*CORE_TABLES, *OPTIONAL_TABLES):
-            if name in existing:
-                tables[name] = pd.read_sql_query(f'SELECT * FROM "{name}"', connection)
-            else:
-                missing.append(name)
-    absent_core = set(CORE_TABLES) & set(missing)
-    if absent_core:
-        raise ValueError(f"Database is missing required analytical tables: {sorted(absent_core)}")
+    uri = f"{database.as_uri()}?mode=ro"
+    try:
+        with closing(sqlite3.connect(uri, uri=True)) as connection:
+            check_results = [row[0] for row in connection.execute("PRAGMA quick_check")]
+            if check_results != ["ok"]:
+                raise ValueError(
+                    f"SQLite integrity check failed for {database}: "
+                    f"{'; '.join(check_results[:5])}"
+                )
+            existing = {
+                row[0]
+                for row in connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            absent_core = set(CORE_TABLES) - existing
+            if absent_core:
+                raise ValueError(
+                    f"Database is missing required analytical tables: "
+                    f"{sorted(absent_core)}"
+                )
+            for name in (*CORE_TABLES, *OPTIONAL_TABLES):
+                if name not in existing:
+                    missing.append(name)
+                    continue
+                columns = {
+                    row[1] for row in connection.execute(f'PRAGMA table_info("{name}")')
+                }
+                absent_columns = REQUIRED_COLUMNS[name] - columns
+                if absent_columns:
+                    raise ValueError(
+                        f"Database table '{name}' is missing required columns: "
+                        f"{sorted(absent_columns)}"
+                    )
+                tables[name] = pd.read_sql_query(
+                    f'SELECT * FROM "{name}"', connection
+                )
+    except sqlite3.DatabaseError as exc:
+        raise ValueError(
+            f"Unable to read analytical SQLite database at {database}: {exc}"
+        ) from exc
     return tables, missing
 
 

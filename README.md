@@ -159,6 +159,24 @@ atomically replaces its output only after validation. It does not delete or
 rewrite raw sources. The dashboard listens on Streamlit's local URL (normally
 `http://localhost:8501`).
 
+## Streamlit Community Cloud deployment
+
+The production dashboard uses the validated SQLite snapshot at
+`data/processed/f1_intelligence.db`, committed to the deployment branch.
+Streamlit Community Cloud reads this repository-relative file directly; it
+does not download source datasets or rebuild the database on app startup. The
+loader verifies SQLite integrity and the required analytical schema, and opens
+the file read-only. Deploy the `main` branch with `app.py` as the entry point
+after merging the change that adds the database. To publish a refreshed
+snapshot, build and validate it locally, review the binary diff/size, then
+include it in a reviewed pull request.
+
+The app reports a deployment-specific missing-file error if the database is
+not present in the deployed branch. For local development, stage the source
+datasets and run `python scripts\build_database.py`; a failed build leaves an
+existing database untouched. The configured database path is resolved from
+the repository root, independently of the shell's current directory.
+
 Tableau extracts are written under `data/exports/tableau/`, with one
 `.data_dictionary.md` per CSV. See
 [the Tableau implementation guide](docs/tableau_implementation_guide.md).
@@ -174,16 +192,21 @@ Troubleshooting:
 - **Database locked/rebuild issue:** stop another process using the database
   and rerun `scripts\build_database.py`. The existing database is not replaced
   when validation fails.
-- **Dashboard says database missing:** build it first with
-  `python scripts\build_database.py`.
+- **Dashboard says database missing locally:** verify that the source datasets
+  are staged and run `python scripts\build_database.py`. If it is missing on
+  Streamlit Cloud, verify that the deployment uses `main` and that the branch
+  contains `data/processed/f1_intelligence.db`.
 - **Tests fail at collection in `tests\test_settings.py`:** verify that file
   does not contain stray editor text; this project has encountered local
   uncommitted corruption in that test file before.
 
 ## Data and Git policy
 
-Downloaded raw datasets, FastF1 caches, SQLite files, generated quality
-outputs, exports, model artifacts, credentials, and virtual environments are
-ignored where appropriate. The Kaggle destination directories are ignored
-because large raw data and licensing should be handled locally. Configuration
-uses relative paths; original raw files and KaggleHub's cache are preserved.
+Downloaded raw datasets, FastF1 caches, generated SQLite outputs, generated
+quality outputs, exports, model artifacts, credentials, and virtual
+environments are ignored where appropriate. The validated
+`data/processed/f1_intelligence.db` snapshot is an intentional exception so it
+is available to Streamlit deployments. The Kaggle destination directories are
+ignored because large raw data and licensing should be handled locally.
+Configuration uses repository-relative paths; original raw files and
+KaggleHub's cache are preserved.
